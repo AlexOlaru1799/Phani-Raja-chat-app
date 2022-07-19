@@ -31,6 +31,10 @@ abstract class GroupsRecord
   DateTime get lastMessageTime;
 
   @nullable
+  @BuiltValueField(wireName: 'photo_url')
+  String get photoUrl;
+
+  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
@@ -39,7 +43,8 @@ abstract class GroupsRecord
     ..id = 0
     ..type = ''
     ..joinedBy = ListBuilder()
-    ..text = '';
+    ..text = ''
+    ..photoUrl = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('groups');
@@ -68,6 +73,7 @@ Map<String, dynamic> createGroupsRecordData({
   String type,
   String text,
   DateTime lastMessageTime,
+  String photoUrl,
 }) =>
     serializers.toFirestore(
         GroupsRecord.serializer,
@@ -77,4 +83,5 @@ Map<String, dynamic> createGroupsRecordData({
           ..type = type
           ..joinedBy = null
           ..text = text
-          ..lastMessageTime = lastMessageTime));
+          ..lastMessageTime = lastMessageTime
+          ..photoUrl = photoUrl));

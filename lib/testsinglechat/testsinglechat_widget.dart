@@ -79,14 +79,17 @@ class _TestsinglechatWidgetState extends State<TestsinglechatWidget> {
                 child: SingleChildScrollView(
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                         child: StreamBuilder<List<ChatsRecord>>(
                           stream: queryChatsRecord(
-                            queryBuilder: (chatsRecord) =>
-                                chatsRecord.orderBy('last_message_time'),
+                            queryBuilder: (chatsRecord) => chatsRecord
+                                .where('users',
+                                    arrayContains:
+                                        widget.userrefference.reference)
+                                .orderBy('last_message_time'),
                             limit: 50,
                           ),
                           builder: (context, snapshot) {

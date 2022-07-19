@@ -63,6 +63,13 @@ class _$GroupsRecordSerializer implements StructuredSerializer<GroupsRecord> {
         ..add(serializers.serialize(value,
             specifiedType: const FullType(DateTime)));
     }
+    value = object.photoUrl;
+    if (value != null) {
+      result
+        ..add('photo_url')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
     value = object.reference;
     if (value != null) {
       result
@@ -112,6 +119,10 @@ class _$GroupsRecordSerializer implements StructuredSerializer<GroupsRecord> {
           result.lastMessageTime = serializers.deserialize(value,
               specifiedType: const FullType(DateTime)) as DateTime;
           break;
+        case 'photo_url':
+          result.photoUrl = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
         case 'Document__Reference__Field':
           result.reference = serializers.deserialize(value,
                   specifiedType: const FullType(
@@ -139,6 +150,8 @@ class _$GroupsRecord extends GroupsRecord {
   @override
   final DateTime lastMessageTime;
   @override
+  final String photoUrl;
+  @override
   final DocumentReference<Object> reference;
 
   factory _$GroupsRecord([void Function(GroupsRecordBuilder) updates]) =>
@@ -151,6 +164,7 @@ class _$GroupsRecord extends GroupsRecord {
       this.joinedBy,
       this.text,
       this.lastMessageTime,
+      this.photoUrl,
       this.reference})
       : super._();
 
@@ -171,6 +185,7 @@ class _$GroupsRecord extends GroupsRecord {
         joinedBy == other.joinedBy &&
         text == other.text &&
         lastMessageTime == other.lastMessageTime &&
+        photoUrl == other.photoUrl &&
         reference == other.reference;
   }
 
@@ -179,10 +194,14 @@ class _$GroupsRecord extends GroupsRecord {
     return $jf($jc(
         $jc(
             $jc(
-                $jc($jc($jc($jc(0, name.hashCode), id.hashCode), type.hashCode),
-                    joinedBy.hashCode),
-                text.hashCode),
-            lastMessageTime.hashCode),
+                $jc(
+                    $jc(
+                        $jc($jc($jc(0, name.hashCode), id.hashCode),
+                            type.hashCode),
+                        joinedBy.hashCode),
+                    text.hashCode),
+                lastMessageTime.hashCode),
+            photoUrl.hashCode),
         reference.hashCode));
   }
 
@@ -195,6 +214,7 @@ class _$GroupsRecord extends GroupsRecord {
           ..add('joinedBy', joinedBy)
           ..add('text', text)
           ..add('lastMessageTime', lastMessageTime)
+          ..add('photoUrl', photoUrl)
           ..add('reference', reference))
         .toString();
   }
@@ -231,6 +251,10 @@ class GroupsRecordBuilder
   set lastMessageTime(DateTime lastMessageTime) =>
       _$this._lastMessageTime = lastMessageTime;
 
+  String _photoUrl;
+  String get photoUrl => _$this._photoUrl;
+  set photoUrl(String photoUrl) => _$this._photoUrl = photoUrl;
+
   DocumentReference<Object> _reference;
   DocumentReference<Object> get reference => _$this._reference;
   set reference(DocumentReference<Object> reference) =>
@@ -249,6 +273,7 @@ class GroupsRecordBuilder
       _joinedBy = $v.joinedBy?.toBuilder();
       _text = $v.text;
       _lastMessageTime = $v.lastMessageTime;
+      _photoUrl = $v.photoUrl;
       _reference = $v.reference;
       _$v = null;
     }
@@ -278,6 +303,7 @@ class GroupsRecordBuilder
               joinedBy: _joinedBy?.build(),
               text: text,
               lastMessageTime: lastMessageTime,
+              photoUrl: photoUrl,
               reference: reference);
     } catch (_) {
       String _$failedField;

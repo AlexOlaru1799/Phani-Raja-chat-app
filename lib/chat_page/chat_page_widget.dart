@@ -1,4 +1,3 @@
-import '../add_chat_users/add_chat_users_widget.dart';
 import '../backend/backend.dart';
 import '../flutter_flow/chat/index.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
@@ -74,70 +73,45 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
         ),
         title: Stack(
           children: [
-            if (!(isGroupChat()) ?? true)
-              StreamBuilder<List<ChatsRecord>>(
-                stream: queryChatsRecord(
-                  singleRecord: true,
-                ),
-                builder: (context, snapshot) {
-                  // Customize what your widget looks like when it's loading.
-                  if (!snapshot.hasData) {
-                    return Center(
-                      child: SizedBox(
-                        width: 50,
-                        height: 50,
-                        child: CircularProgressIndicator(
-                          color: FlutterFlowTheme.of(context).primaryColor,
-                        ),
-                      ),
-                    );
-                  }
-                  List<ChatsRecord> textChatsRecordList = snapshot.data;
-                  // Return an empty Container when the document does not exist.
-                  if (snapshot.data.isEmpty) {
-                    return Container();
-                  }
-                  final textChatsRecord = textChatsRecordList.isNotEmpty
-                      ? textChatsRecordList.first
-                      : null;
-                  return Text(
-                    widget.chatUser.displayName,
-                    style: FlutterFlowTheme.of(context).bodyText1.override(
-                          fontFamily: 'Lexend Deca',
-                          color: FlutterFlowTheme.of(context).primaryText,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
-                  );
-                },
+            StreamBuilder<List<ChatsRecord>>(
+              stream: queryChatsRecord(
+                singleRecord: true,
               ),
-          ],
-        ),
-        actions: [
-          Visibility(
-            visible: isGroupChat() ?? true,
-            child: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0, 0, 20, 0),
-              child: InkWell(
-                onTap: () async {
-                  await Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => AddChatUsersWidget(
-                        chat: _chatInfo.chatRecord,
+              builder: (context, snapshot) {
+                // Customize what your widget looks like when it's loading.
+                if (!snapshot.hasData) {
+                  return Center(
+                    child: SizedBox(
+                      width: 50,
+                      height: 50,
+                      child: CircularProgressIndicator(
+                        color: FlutterFlowTheme.of(context).primaryColor,
                       ),
                     ),
                   );
-                },
-                child: Icon(
-                  Icons.person_add,
-                  color: FlutterFlowTheme.of(context).primaryText,
-                  size: 24,
-                ),
-              ),
+                }
+                List<ChatsRecord> textChatsRecordList = snapshot.data;
+                // Return an empty Container when the document does not exist.
+                if (snapshot.data.isEmpty) {
+                  return Container();
+                }
+                final textChatsRecord = textChatsRecordList.isNotEmpty
+                    ? textChatsRecordList.first
+                    : null;
+                return Text(
+                  widget.chatUser.displayName,
+                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                        fontFamily: 'Lexend Deca',
+                        color: FlutterFlowTheme.of(context).primaryText,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                );
+              },
             ),
-          ),
-        ],
+          ],
+        ),
+        actions: [],
         centerTitle: false,
         elevation: 2,
       ),

@@ -125,8 +125,8 @@ class _NavBarPageState extends State<NavBarPage> {
       'homePage': HomePageWidget(),
       'storyDetails': StoryDetailsWidget(),
       'creategroup': CreategroupWidget(),
-      'AllChats': AllChatsWidget(),
       'Yourprofile': YourprofileWidget(),
+      'AllChats': AllChatsWidget(),
       'marketplace': MarketplaceWidget(),
       'GroupChattest': GroupChattestWidget(),
     };
@@ -169,14 +169,6 @@ class _NavBarPageState extends State<NavBarPage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.mark_chat_unread,
-              size: 24,
-            ),
-            label: 'Home',
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
               Icons.account_circle_outlined,
               size: 24,
             ),
@@ -185,6 +177,14 @@ class _NavBarPageState extends State<NavBarPage> {
               size: 24,
             ),
             label: 'Profile',
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.mark_chat_unread,
+              size: 24,
+            ),
+            label: 'Home',
             tooltip: '',
           ),
           BottomNavigationBarItem(

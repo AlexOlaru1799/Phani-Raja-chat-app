@@ -184,6 +184,8 @@ class _CreategroupWidgetState extends State<CreategroupWidget> {
                         name: textController2.text,
                         id: random_data.randomInteger(5, 999999),
                         type: dropDownValue,
+                        photoUrl:
+                            'https://picsum.photos/seed/${random_data.randomInteger(1, 500).toString()}/200',
                       );
                       await GroupsRecord.collection.doc().set(groupsCreateData);
                     },
