@@ -482,12 +482,11 @@ class _ViewProfilePageOtherWidgetState
                                 ),
                                 ToggleIcon(
                                   onPressed: () async {
-                                    final usersUpdateData =
-                                        createUsersRecordData(
-                                      isFollowed:
+                                    final usersUpdateData = {
+                                      'isFollowed':
                                           !viewProfilePageOtherUsersRecord
                                               .isFollowed,
-                                    );
+                                    };
                                     await viewProfilePageOtherUsersRecord
                                         .reference
                                         .update(usersUpdateData);

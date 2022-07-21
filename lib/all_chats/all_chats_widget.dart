@@ -1,9 +1,9 @@
 import '../backend/backend.dart';
+import '../chat_page/chat_page_widget.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../group_chattest/group_chattest_widget.dart';
-import '../testsinglechat/testsinglechat_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -406,8 +406,8 @@ class _AllChatsWidgetState extends State<AllChatsWidget>
                                                       context,
                                                       MaterialPageRoute(
                                                         builder: (context) =>
-                                                            TestsinglechatWidget(
-                                                          userrefference:
+                                                            ChatPageWidget(
+                                                          chatUser:
                                                               listViewUsersRecord,
                                                         ),
                                                       ),
